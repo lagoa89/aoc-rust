@@ -1,17 +1,14 @@
 use colored::*;
-use std::fs;
+use utils::*;
 
 const TOTAL: i32 = 2020;
-const FILENAME: &str = "./2020day1/input.txt";
+const FILENAME: &str = "./day1_2020/input.txt";
 
 fn main() {
-    // let contents = fs::read_to_string(FILENAME)
-    //     .map_err(|_| "Something went wrong ")
-    //     .unwrap(); //.expect("Something went wrong reading the file");
-
-    match read(FILENAME) {
+    match read_file(FILENAME) {
         Ok(contents) => {
-            process_input(contents);
+            let numbers = process_input_into_vec(contents);
+            find_two_that_add_to_total(numbers)
         }
         Err(err) => {
             println!("{} {}", "There was an error reading".red(), FILENAME.red());
@@ -20,21 +17,7 @@ fn main() {
     }
 }
 
-fn read(filename: &str) -> Result<String, std::io::Error> {
-    println!("Opening file {}", FILENAME);
-    fs::read_to_string(filename)
-}
-
-fn process_input(contents: String) {
-    println!("Number of lines: {}", contents.len());
-
-    let numbers: Vec<i32> = contents
-        .lines()
-        .into_iter()
-        .map(|line| line.trim())
-        .map(|line| line.parse().unwrap())
-        .collect();
-
+fn find_two_that_add_to_total(numbers: Vec<i32>) {
     let mut found = false;
     for number1 in numbers.clone() {
         for number2 in numbers.clone() {
@@ -59,6 +42,22 @@ fn process_input(contents: String) {
         };
     }
 }
+
+// fn read(filename: &str) -> Result<String, std::io::Error> {
+//     println!("Opening file {}", FILENAME);
+//     fs::read_to_string(filename)
+// }
+
+// fn process_input_into_vec(contents: String) -> Vec<i32> {
+//     println!("Number of lines: {}", contents.len());
+
+//     contents
+//         .lines()
+//         .into_iter()
+//         .map(|line| line.trim())
+//         .map(|line| line.parse().unwrap())
+//         .collect()
+// }
 
 #[test]
 fn test_basic() {

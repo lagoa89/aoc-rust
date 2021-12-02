@@ -3,13 +3,6 @@
 version = 3
 
 [[package]]
-name = "advent-of-code-rust"
-version = "0.1.0"
-dependencies = [
- "colored",
-]
-
-[[package]]
 name = "atty"
 version = "0.2.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -32,6 +25,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "day1"
+version = "0.1.0"
+dependencies = [
+ "colored",
+ "utils",
+]
+
+[[package]]
+name = "day1_2020"
+version = "0.1.0"
+dependencies = [
+ "colored",
+ "utils",
+]
+
+[[package]]
 name = "hermit-abi"
 version = "0.1.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -51,6 +60,10 @@ name = "libc"
 version = "0.2.108"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8521a1b57e76b1ec69af7599e75e38e7b7fad6610f037db8c79b127201b5d119"
+
+[[package]]
+name = "utils"
+version = "0.1.0"
 
 [[package]]
 name = "winapi"
