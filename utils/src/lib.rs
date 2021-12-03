@@ -2,23 +2,23 @@ use std::fs;
 use std::io::Read;
 use std::{fs::File, io::BufReader};
 
-pub fn read_buffer_vec(filename: &str) -> Result<Vec<i32>, std::io::Error> {
+pub fn read_buffer_to_string(filename: &str) -> Result<String, std::io::Error> {
     let file = File::open(filename)?;
     let mut buf_reader = BufReader::new(file);
 
     let mut contents = String::new();
     buf_reader.read_to_string(&mut contents)?;
 
-    let numbers: Vec<i32> = contents
+    Ok(contents)
+}
+
+pub fn vec_to_numbers(contents: String) -> Vec<i32> {
+    contents
         .lines()
         .into_iter()
         .map(|line| line.trim())
         .map(|line| line.parse().unwrap())
-        .collect();
-
-    println!("Length of input {}", numbers.len());
-
-    Ok(numbers)
+        .collect()
 }
 
 pub fn read_file(filename: &str) -> Result<String, std::io::Error> {

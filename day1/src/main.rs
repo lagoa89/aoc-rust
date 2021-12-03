@@ -3,7 +3,9 @@ use utils::*;
 const FILENAME: &str = "./day1/input.txt";
 
 fn main() {
-    let numbers = read_buffer_vec(FILENAME).unwrap();
+    let contents = read_buffer_to_string(FILENAME).unwrap();
+    let numbers = vec_to_numbers(contents);
+
     calculate(numbers.clone());
     calculate_sliding(numbers);
 }
