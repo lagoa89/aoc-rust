@@ -12,6 +12,15 @@ pub fn read_buffer_to_string(filename: &str) -> Result<String, std::io::Error> {
     Ok(contents)
 }
 
+pub fn vec_to_string(contents: String) -> Vec<String> {
+    contents
+        .lines()
+        .into_iter()
+        .map(|line| line.trim())
+        .map(|line| line.to_string())
+        .collect()
+}
+
 pub fn vec_to_numbers(contents: String) -> Vec<i32> {
     contents
         .lines()
